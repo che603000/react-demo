@@ -1,8 +1,11 @@
-var Login = require('../models/login');
+var React = require('react');
+
 
 var Form = React.createClass({
-    model: new Login(),
-
+    getInitialState: function () {
+        this.model = this.props.model;
+        return this.model.toJSON();
+    },
     onEmail: function (e) {
         this.model.set({email: e.target.value});
     },
@@ -11,12 +14,18 @@ var Form = React.createClass({
         this.model.save();
 
     },
+
+    componentDidMount: function () {
+
+        this.model.load();
+    },
     render: function () {
         return (
             <form>
                 <div className="form-group">
                     <label>Email</label>
-                    <input type="text" onChange={this.onEmail} value ="alex@aa.ru" className="form-control" placeholder="Enter email"/>
+                    <input type="text" onChange={this.onEmail} value={this.state.email} className="form-control"
+                           placeholder="Enter email"/>
                 </div>
 
                 <div className="form-group">

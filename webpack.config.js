@@ -18,11 +18,14 @@ module.exports = {
     plugins: [
         new webpack.ResolverPlugin(
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
-        )
+        ),
+        new webpack.SourceMapDevToolPlugin(
+            'form.js.map', null,
+            "[absolute-resource-path]", "[absolute-resource-path]")
     ],
     output: {
         publicPath: ".",
-        filename: "./public/js/bundle.js"
+        filename: "./public/js/app.js"
     },
     module: {
         loaders: [
