@@ -2,20 +2,30 @@
   "name": "react-demo",
   "version": "0.0.1",
   "dependencies": {
+    "backbone": "^1.2.3",
+    "backbone-validation": "^0.11.5",
     "bootstrap": "^3.3.5",
     "jquery": "^2.1.4",
     "react": "^0.14.0",
     "react-dom": "^0.14.0"
   },
   "devDependencies": {
+    "bower": "^1.5.3",
     "browserify": "^11.2.0",
+    "git": "^0.1.5",
     "gulp": "^3.9.0",
+    "gulp-bower": "0.0.10",
     "gulp-browserify": "^0.5.1",
     "gulp-concat": "^2.6.0",
+    "gulp-filter": "^3.0.1",
     "gulp-jsx": "^2.0.1",
+    "gulp-main-bower-files": "^1.2.3",
     "gulp-react": "^3.0.1",
+    "jsx-loader": "^0.13.2",
+    "main-bower-files": "^2.9.0",
     "reactify": "^1.1.1",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.4.0"
+    "watchify": "^3.4.0",
+    "webpack": "^1.12.2"
   }
 }

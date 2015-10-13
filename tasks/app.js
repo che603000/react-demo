@@ -9,7 +9,7 @@ var gulp = require('gulp'),
     reactify = require('reactify');
 
 
-gulp.task('dev-js',['css'], function () {
+gulp.task('app', function () {
     var bundler = browserify({
         entries: ['./client/js/app.jsx'], // Only need initial file, browserify finds the deps
         transform: [reactify], // We want to convert JSX to normal javascript

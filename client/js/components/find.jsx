@@ -1,6 +1,5 @@
-var React = require('react'),
-    $ = require('jquery');
 
+var React = require('react');
 
 module.exports = React.createClass({
     getInitialState: function () {
