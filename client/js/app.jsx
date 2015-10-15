@@ -7,14 +7,13 @@ _.extend(Backbone.Model.prototype, Backbone.Validation.mixin);
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var Find = require('./components/find.jsx');
-var Form = require('./components/form.jsx');
+var Find = require('./components/find');
+var Form = require('./components/form');
 var Login = require('./models/login');
 
-var login = new Login({email:"alex@api.ru"});
+var login = new Login({email:"alex@api.ru", password: '1234'});
 
 ReactDOM.render(
-    //<Find url="./data/load.json"/>,
     <Form model={login}/>,
     document.getElementById('example')
 );

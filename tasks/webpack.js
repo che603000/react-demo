@@ -1,9 +1,18 @@
-var path = require("path");
-var webpack = require("webpack");
+/**
+ * Created by alex on 12.10.2015.
+ */
+
+var path = require("path"),
+    gulp = require('gulp'),
+    source = require('vinyl-source-stream'), // Used to stream bundle for further handling etc.
+    browserify = require('browserify'),
+    watchify = require('watchify'),
+    reactify = require('reactify'),
+    gutil = require("gulp-util"),
+    webpack = require("webpack");
 
 
-
-module.exports = {
+var conf = {
     entry: "./client/js/app.jsx",
     debug: true, // Gives us sourcemapping
     resolve: {
@@ -39,8 +48,25 @@ module.exports = {
     externals: {
         //don't bundle the 'react' npm package with our bundle.js
         //but get it from a global 'React' variable
-        //'react': 'React'
+        "jquery": "$",
+        "underscore": '_',
+        "react-dom": 'ReactDOM',
+        "react": 'React',
+        "backbone": 'Backbone',
+        "backbone.validation": "Backbone.validation",
     },
-
+    watch: true
 };
+
+
+gulp.task('webpack', function () {
+    return webpack(conf, function (err, stats) {
+        if (err)
+            throw new gutil.PluginError("webpack", err);
+
+        gutil.log("[webpack]", stats.toString({
+            // output options
+        }));
+    });
+});
 

@@ -12,6 +12,7 @@ var gulp = require('gulp'),
 
 gulp.task('css', function () {
     console.log("css");
+
     return gulp.src('./client/css/*.css')
         //.pipe(concat('styles.css'))
         .pipe(gulp.dest('./public/css/'));

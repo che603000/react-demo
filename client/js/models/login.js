@@ -8,7 +8,9 @@ module.exports = Backbone.Model.extend({
     urlRoot: './js/data/load.json',
     defaults: {
         email: '',
-        password: ''
+        password: '',
+        password1:'',
+        memory :true
     },
     validation: {
         email: {
@@ -18,6 +20,11 @@ module.exports = Backbone.Model.extend({
         password: {
             required: true,
             minLength : 4,
+        },
+        passwordConfirm: {
+            required: true,
+            minLength : 4,
+            equalTo: 'password'
         }
     },
     initialize: function (attr, options) {
