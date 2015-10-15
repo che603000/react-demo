@@ -2,6 +2,8 @@
  * Created by alex on 12.10.2015.
  */
 
+_.extend(Backbone.Model.prototype, Backbone.Validation.mixin);
+
 var React = require('react');
 var ReactDOM = require('react-dom');
 

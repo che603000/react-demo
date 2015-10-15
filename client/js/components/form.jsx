@@ -1,52 +1,85 @@
 var React = require('react');
 
 
-var Form = React.createClass({
+var Field = React.createClass({
+    isValidate: true,
     getInitialState: function () {
         this.model = this.props.model;
-        return this.model.toJSON();
+        this.model.on('validated', this.onValidated);
+        var state = {
+            value: this.model.get(this.props.name),
+            classGroup: 'form-group',
+            message: '',
+        };
+        return state;
     },
-    onEmail: function (e) {
-        this.model.set({email: e.target.value});
+    onValidated: function (isValid, model, errors) {
+        if (errors[this.props.name])
+            this.setState({classGroup: 'form-group has-error', message: errors[this.props.name]});
+        else
+            this.setState({classGroup: 'form-group', message: ''});
     },
+    onChangeValue: function (e) {
+        this.model.set(this.props.name, e.target.value);
+        this.setState({value: e.target.value});
+    },
+    render: function () {
+        return (
+            <div className={this.state.classGroup}>
+                <label>{this.props.label}</label>
+                <input type={this.props.type}
+                       className="form-control"
+                       value={this.state.value}
+                       placeholder={this.props.placeholder}
+                       onChange={this.onChangeValue}
+                    />
+                <small className="help-block">{this.state.message}</small>
+            </div>
+        )
+    }
+});
+
+var Form = React.createClass({
+    getInitialState: function () {
+        //this.model = this.props.model;
+        //return this.model.toJSON();
+        return {};
+    },
+
     onSubmit: function (e) {
+
         e.preventDefault();
-        this.model.save();
+        this.props.model.save();
 
     },
 
     componentDidMount: function () {
-
-        this.model.load();
+        var c = this.refs.myForm.children;
+        console.log("i");
     },
     render: function () {
         return (
-            <form>
-                <div className="form-group">
-                    <label>Email</label>
-                    <input type="text" onChange={this.onEmail} value={this.state.email} className="form-control"
-                           placeholder="Enter email"/>
-                </div>
+                <form ref="myForm">
+                    <Field label="Email" type="text" name="email" placeholder="Enter email" model={this.props.model}/>
+                    <Field label="Пароль" type="password" className="form-control" name="password"
+                           placeholder="Password" model={this.props.model}/>
 
-                <div className="form-group">
-                    <label >Пароль</label>
-                    <input type="password" className="form-control" placeholder="Password"/>
-                </div>
 
-                <div className="form-group">
-                    <label >File input</label>
-                    <input type="file"/>
+                    <div className="form-group">
+                        <label >File input</label>
+                        <input type="file"/>
 
-                    <p className="help-block">Example block-level help text here.</p>
-                </div>
+                        <p className="help-block">Example block-level help text here.</p>
+                    </div>
 
-                <div className="checkbox">
-                    <label>
-                        <input type="checkbox"/> Проверить меня
-                    </label>
-                </div>
-                <button type="submit" className="btn btn-default" onClick={this.onSubmit}>Отправить</button>
-            </form>
+                    <div className="checkbox">
+                        <label>
+                            <input type="checkbox"/> Проверить меня
+                        </label>
+                    </div>
+                    <button type="submit" className="btn btn-default" onClick={this.onSubmit}>Отправить</button>
+                </form>
+
         );
     }
 });

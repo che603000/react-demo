@@ -2,19 +2,28 @@
  * Created by alex on 13.10.2015.
  */
 
-var Backbone = require('backbone');
-
+//var Backbone = require('backbone');
 
 module.exports = Backbone.Model.extend({
-    urlRoot:'./js/data/load.json',
-    defaults:{
-        email:'',
+    urlRoot: './js/data/load.json',
+    defaults: {
+        email: '',
         password: ''
     },
-    initialize:function(attr, options){
+    validation: {
+        email: {
+            required: true,
+            pattern: 'email',
+        },
+        password: {
+            required: true,
+            minLength : 4,
+        }
+    },
+    initialize: function (attr, options) {
 
     },
-    load: function(){
+    load: function () {
         return this.fetch();
     }
 });
