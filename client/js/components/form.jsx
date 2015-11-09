@@ -1,16 +1,12 @@
-
 var FieldInput = require('./fields/input'),
     FieldCheckbox = require('./fields/checkbox');
 
 var Form = React.createClass({
-    es5(f1, f2){
-        //ебануться можно !!!
-    },
-    onSubmit: function (e) {
+    onSubmit (e) {
         e.preventDefault();
         this.props.model.save();
     },
-    render: function () {
+    render () {
         return (
             <form >
                 <FieldInput label="Email" type="text" name="email" placeholder="Enter email" model={this.props.model}/>

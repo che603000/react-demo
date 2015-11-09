@@ -4,7 +4,7 @@
 
 
 module.exports = React.createClass({
-    getInitialState: function () {
+    getInitialState() {
         this.model = this.props.model;
         this.model.on('validated', this.onValidated);
         var state = {
@@ -15,17 +15,17 @@ module.exports = React.createClass({
 
         return state;
     },
-    onValidated: function (isValid, model, errors) {
+    onValidated (isValid, model, errors) {
         if (errors[this.props.name])
             this.setState({classGroup: 'form-group has-error', message: errors[this.props.name]});
         else
             this.setState({classGroup: 'form-group', message: ''});
     },
-    onChangeValue: function (e) {
+    onChangeValue (e) {
         this.model.set(this.props.name, e.target.value);
         this.setState({value: e.target.value});
     },
-    render: function () {
+    render() {
         return (
             <div className={this.state.classGroup}>
                 <label>{this.props.label}</label>

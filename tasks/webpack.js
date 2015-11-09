@@ -29,7 +29,7 @@ var conf = {
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
         ),
         new webpack.SourceMapDevToolPlugin(
-            'app.js.map', null,
+            './public/js/app.js.map', null,
             "[absolute-resource-path]", "[absolute-resource-path]")
     ],
     output: {
@@ -37,22 +37,14 @@ var conf = {
         filename: "./public/js/app.js"
     },
     module: {
-        loaders: [
-            //{
-            //    //tell webpack to use jsx-loader for all *.jsx files
-            //    test: /\.jsx?$/,
-            //    loader: 'jsx-loader?insertPragma=React.DOM&harmony'
-            //},
-            {
-                test: /.jsx?$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015', 'react']
-                }
-            },
-
-        ]
+        loaders: [{
+            test: /.jsx?$/,
+            loader: 'babel-loader',
+            exclude: /node_modules/,
+            query: {
+                presets: ['es2015', 'react']
+            }
+        }]
     },
     externals: {
         //don't bundle the 'react' npm package with our bundle.js
@@ -64,9 +56,6 @@ var conf = {
         "backbone": 'Backbone',
         "backbone.validation": "Backbone.validation",
     },
-    ignore: [
-        "less/bootstrap.less"
-    ],
     watch: true
 };
 
