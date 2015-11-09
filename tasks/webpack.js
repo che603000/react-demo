@@ -29,7 +29,7 @@ var conf = {
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
         ),
         new webpack.SourceMapDevToolPlugin(
-            'form.js.map', null,
+            'app.js.map', null,
             "[absolute-resource-path]", "[absolute-resource-path]")
     ],
     output: {
@@ -38,23 +38,35 @@ var conf = {
     },
     module: {
         loaders: [
+            //{
+            //    //tell webpack to use jsx-loader for all *.jsx files
+            //    test: /\.jsx?$/,
+            //    loader: 'jsx-loader?insertPragma=React.DOM&harmony'
+            //},
             {
-                //tell webpack to use jsx-loader for all *.jsx files
-                test: /\.jsx$/,
-                loader: 'jsx-loader?insertPragma=React.DOM&harmony'
-            }
+                test: /.jsx?$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+                query: {
+                    presets: ['es2015', 'react']
+                }
+            },
+
         ]
     },
     externals: {
         //don't bundle the 'react' npm package with our bundle.js
         //but get it from a global 'React' variable
-        "jquery": "$",
         "underscore": '_',
+        "jquery": "$",
         "react-dom": 'ReactDOM',
         "react": 'React',
         "backbone": 'Backbone',
         "backbone.validation": "Backbone.validation",
     },
+    ignore: [
+        "less/bootstrap.less"
+    ],
     watch: true
 };
 
@@ -63,10 +75,10 @@ gulp.task('webpack', function () {
     return webpack(conf, function (err, stats) {
         if (err)
             throw new gutil.PluginError("webpack", err);
-
-        gutil.log("[webpack]", stats.toString({
-            // output options
-        }));
+        else
+            gutil.log("[webpack]", stats.toString({
+                // output options
+            }));
     });
 });
 

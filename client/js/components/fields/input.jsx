@@ -2,7 +2,7 @@
  * Created by alex on 15.10.2015.
  */
 
-var React = require('react');
+
 module.exports = React.createClass({
     getInitialState: function () {
         this.model = this.props.model;
@@ -12,6 +12,7 @@ module.exports = React.createClass({
             classGroup: 'form-group',
             message: '',
         };
+
         return state;
     },
     onValidated: function (isValid, model, errors) {

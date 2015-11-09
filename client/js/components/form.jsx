@@ -1,10 +1,11 @@
-var React = require('react');
 
-
-var FieldInput = require('fields/input'),
+var FieldInput = require('./fields/input'),
     FieldCheckbox = require('./fields/checkbox');
 
 var Form = React.createClass({
+    es5(f1, f2){
+        //ебануться можно !!!
+    },
     onSubmit: function (e) {
         e.preventDefault();
         this.props.model.save();

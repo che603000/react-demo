@@ -9,7 +9,6 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
     "test",
     "tests"
   ],
@@ -19,7 +18,7 @@
     "backbone": "~1.2.3",
     "backbone.validation": "backbone-validation#~0.11.5",
     "react": "~0.14.0",
-    "react-dom": "~0.1.0",
-    "bootstrap": "~3.3.5"
+    "react-dom": "~0.1.0"
+
   }
 }

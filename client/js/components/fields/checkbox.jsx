@@ -1,7 +1,6 @@
 /**
  * Created by alex on 15.10.2015.
  */
-var React = require('react');
 
 module.exports = React.createClass({
     isValidate: true,
