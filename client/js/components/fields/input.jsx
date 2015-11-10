@@ -6,14 +6,15 @@
 module.exports = React.createClass({
     getInitialState() {
         this.model = this.props.model;
-        this.model.on('validated', this.onValidated);
+        this.model.on('validated', this.onValidated, this);
         var state = {
             value: this.model.get(this.props.name),
             classGroup: 'form-group',
             message: '',
         };
 
-        return state;
+        return state;bower
+
     },
     onValidated (isValid, model, errors) {
         if (errors[this.props.name])

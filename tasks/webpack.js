@@ -10,6 +10,7 @@ var path = require("path"),
     reactify = require('reactify'),
     gutil = require("gulp-util"),
     webpack = require("webpack");
+//TCP =require("babel-plugin-transform-class-properties");
 
 
 var conf = {
@@ -30,7 +31,9 @@ var conf = {
         ),
         new webpack.SourceMapDevToolPlugin(
             './public/js/app.js.map', null,
-            "[absolute-resource-path]", "[absolute-resource-path]")
+            "[absolute-resource-path]", "[absolute-resource-path]"
+        ),
+
     ],
     output: {
         publicPath: ".",
@@ -42,7 +45,8 @@ var conf = {
             loader: 'babel-loader',
             exclude: /node_modules/,
             query: {
-                presets: ['es2015', 'react']
+                presets: ['es2015', 'react', 'stage-1'],
+                plugins: []
             }
         }]
     },

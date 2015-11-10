@@ -1,16 +1,15 @@
 /**
- * Created by alex on 12.10.2015.
+ * App Created by alex on 12.10.2015.
  */
 
 // init app
-require('./app-setup');
+import './app-setup';
 
 // models
-var Login = require('./models/login');
+import Login from './models/login';
 
 // components
-//var Find = require('./components/find');
-var Form = require('./components/form');
+import Form  from './components/form';
 
 var login = new Login({
     email: "alex@api.ru",

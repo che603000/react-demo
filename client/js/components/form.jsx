@@ -1,12 +1,19 @@
-var FieldInput = require('./fields/input'),
-    FieldCheckbox = require('./fields/checkbox');
+import FieldInput from './fields/input'
+import FieldCheckbox from './fields/checkbox'
 
-var Form = React.createClass({
+
+export default class Form extends React.Component {
+    constructor(props) {
+        super(props);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
     onSubmit (e) {
         e.preventDefault();
         this.props.model.save();
-    },
-    render () {
+    }
+
+    render() {
         return (
             <form >
                 <FieldInput label="Email" type="text" name="email" placeholder="Enter email" model={this.props.model}/>
@@ -19,6 +26,4 @@ var Form = React.createClass({
             </form>
         );
     }
-});
-
-module.exports = Form;
+}
