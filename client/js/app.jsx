@@ -5,17 +5,23 @@
 // init app
 import './app-setup';
 
+
 // models
-import Login from './models/login';
+import LoginModel from './models/login';
 
 // components
-import Form  from './components/form';
+//import LoginForm  from './components/form';
+import Tabs from './components/tabs'
 
-var login = new Login({
+var login = new LoginModel({
     email: "alex@api.ru",
-    password: '1234'
+    password: '123'
 });
 ReactDOM.render(
-    <Form model={login}/>,
+    <div >
+        <h1>Tabs</h1>
+        <Tabs model={login}></Tabs>
+    </div>,
+
     document.getElementById('example')
 );

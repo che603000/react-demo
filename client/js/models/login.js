@@ -9,8 +9,8 @@ module.exports = Backbone.Model.extend({
     defaults: {
         email: '',
         password: '',
-        password1:'',
-        memory :true
+        passwordConfirm: '',
+        memory: true
     },
     validation: {
         email: {
@@ -19,18 +19,23 @@ module.exports = Backbone.Model.extend({
         },
         password: {
             required: true,
-            minLength : 4,
+            minLength: 4,
         },
         passwordConfirm: {
             required: true,
-            minLength : 4,
+            minLength: 4,
             equalTo: 'password'
         }
     },
-    initialize: function (attr, options) {
-
+    initialize (attr, options) {
+        this.on('error', this.onError, this);
     },
-    load: function () {
+    load () {
         return this.fetch();
+    },
+    onError(model, xhr){
+        this.validationError = this.validationError || {};
+        this.validationError.xhr = xhr;
+        this.trigger('validated' , false, this, this.validationError);
     }
 });

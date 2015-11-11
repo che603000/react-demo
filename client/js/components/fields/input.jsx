@@ -13,7 +13,7 @@ module.exports = React.createClass({
             message: '',
         };
 
-        return state;bower
+        return state;
 
     },
     onValidated (isValid, model, errors) {
