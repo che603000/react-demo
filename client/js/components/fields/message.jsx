@@ -2,7 +2,6 @@
  * Created by alex on 15.10.2015.
  */
 
-
 export default class Message extends React.Component {
     state = {
         status: '',
@@ -12,14 +11,20 @@ export default class Message extends React.Component {
 
     constructor(props) {
         super(props);
-        this.model = this.props.model;
     }
-    componentWillMount(){
+
+    get model() {
+        return this.props.model;
+    }
+
+    componentWillMount() {
         this.model.on('validated', this.onValidated, this);
     }
-    componentWillUnmount(){
+
+    componentWillUnmount() {
         this.model.off('validated', this.onValidated, this);
     }
+
     onValidated(isValid, model, errors) {
         var xhr = errors['xhr'];
         if (xhr)
@@ -32,13 +37,11 @@ export default class Message extends React.Component {
         return this.props.label + this.state.status + ' - ' + this.state.message;
     }
 
-    get _message(){
-        return this.props.template ? this.props.template(this.props.model, this.state) : this.template();
-    }
     render() {
+        var mes = this.props.template ? this.props.template(this.props.model, this.state) : this.template();
         return (
             <div className="form-group">
-                <div className={this.state.classMessage}>{this._message}</div>
+                <div className={this.state.classMessage}>{mes}</div>
             </div>
         )
     }

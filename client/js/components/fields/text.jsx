@@ -51,11 +51,11 @@ export default class FieldText extends React.Component {
 
     get onChange() {
         return e => {
-            this.value = this._componentValue(e);
+            this.value = this.constructor._componentValue(e);
         }
     }
 
-    _componentValue(e) {
+    static _componentValue(e) {
         return e.target.value;
     }
 
