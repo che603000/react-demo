@@ -2,6 +2,8 @@
  * Created by alex on 15.10.2015.
  */
 
+import newId from '../../utils/newId'
+
 export default class FieldText extends React.Component {
     static defaultProps = {
         validate: false,
@@ -61,11 +63,18 @@ export default class FieldText extends React.Component {
         return this.state.isValid ? this.props.classGroup : this.props.classGroupError;
     }
 
+    get _id() {
+        if (!this.__id)
+            this.__id = newId('id_');
+        return this.__id;
+    }
+
     render() {
         return (
             <div className={this._classGroup}>
-                <label>{this.props.label}</label>
-                <input type={this.props.type}
+                <label htmlFor={this._id}>{this.props.label}</label>
+                <input id={this._id}
+                       type={this.props.type}
                        className={this.props.classInput}
                        value={this.value}
                        name={this.props.name}

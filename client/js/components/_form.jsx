@@ -22,7 +22,7 @@ export default class LoginForm extends React.Component {
     render() {
         return (
             <form >
-                <FieldText label="Email" type="mail" validate name="email"
+                <FieldText label="Логин" type="mail" validate name="email"
                            placeholder="Email как логин для приложения"
                            model={this.model}/>
                 <FieldText label="Пароль" type="password" validate className="form-control" name="password"

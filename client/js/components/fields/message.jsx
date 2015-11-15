@@ -32,11 +32,13 @@ export default class Message extends React.Component {
         return this.props.label + this.state.status + ' - ' + this.state.message;
     }
 
+    get _message(){
+        return this.props.template ? this.props.template(this.props.model, this.state) : this.template();
+    }
     render() {
-        var mes = this.props.template ? this.props.template(this.props.model, this.state) : this.template();
         return (
             <div className="form-group">
-                <div className={this.state.classMessage}>{mes}</div>
+                <div className={this.state.classMessage}>{this._message}</div>
             </div>
         )
     }
