@@ -57,7 +57,7 @@ var conf = {
         "jquery": "$",
         "react-dom": 'ReactDOM',
         "react": 'React',
-        "react-bootstrap":"ReactBootstrap",
+        //"react-bootstrap":"ReactBootstrap",
         "backbone": 'Backbone',
         "backbone.validation": "Backbone.validation",
     },

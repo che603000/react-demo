@@ -2,7 +2,6 @@
  * Created by alex on 15.10.2015.
  */
 
-
 export default class Message extends React.Component {
     state = {
         status: '',
@@ -10,16 +9,17 @@ export default class Message extends React.Component {
         classMessage: 'hide'
     }
 
-    constructor(props) {
-        super(props);
-        this.model = this.props.model;
+    get model(){
+        return this.props.model;
     }
+
     componentWillMount(){
         this.model.on('validated', this.onValidated, this);
     }
     componentWillUnmount(){
         this.model.off('validated', this.onValidated, this);
     }
+
     onValidated(isValid, model, errors) {
         var xhr = errors['xhr'];
         if (xhr)

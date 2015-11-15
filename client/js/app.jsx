@@ -11,17 +11,14 @@ import LoginModel from './models/login';
 
 // components
 //import LoginForm  from './components/form';
-import Tabs from './components/tabs'
+import Form from './components/_form'
 
 var login = new LoginModel({
     email: "alex@api.ru",
     password: '123'
 });
 ReactDOM.render(
-    <div >
-        <h1>Tabs</h1>
-        <Tabs model={login}></Tabs>
-    </div>,
-
+    <Form model={login}></Form>,
     document.getElementById('example')
 );
+

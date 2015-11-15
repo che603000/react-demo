@@ -6,7 +6,8 @@
 module.exports = React.createClass({
     getInitialState() {
         this.model = this.props.model;
-        this.model.on('validated', this.onValidated, this);
+
+
         var state = {
             value: this.model.get(this.props.name),
             classGroup: 'form-group',
@@ -15,6 +16,18 @@ module.exports = React.createClass({
 
         return state;
 
+    },
+
+    componentWillMount(){
+        this.model.on('validated', this.onValidated, this);
+        this.model.on('change:'+ this.props.name, this.onChangeModel, this);
+    },
+    componentWillUnmount(){
+        this.model.off('change:'+ this.props.name, this.onChangeModel, this);
+        this.model.off('validated', this.onValidated, this);
+    },
+    onChangeModel(model, value){
+        this.setState({value: value});
     },
     onValidated (isValid, model, errors) {
         if (errors[this.props.name])

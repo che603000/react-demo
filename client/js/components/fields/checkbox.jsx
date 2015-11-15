@@ -2,31 +2,55 @@
  * Created by alex on 15.10.2015.
  */
 
-module.exports = React.createClass({
-    isValidate: true,
-    getInitialState: function () {
-        this.model = this.props.model;
-        return {
-            value: !!this.model.get(this.props.name),
-        };
-    },
+export default class Checkbox extends React.Component {
 
-    onChangeValue: function (e) {
-        this.model.set(this.props.name, e.target.checked);
-        this.setState({value: e.target.checked});
-    },
-    render: function () {
+    get model() {
+        return this.props.model;
+    }
+
+    get value() {
+        return this.model.get(this.props.name);
+    }
+    set value(val) {
+        this.model.set(this.props.name, val);
+    }
+
+    //constructor(props) {
+    //    super(props);
+    //}
+
+    componentWillMount() {
+        this.model.on('change:' + this.props.name, this.onChangeModel, this);
+    }
+
+    componentWillUnmount() {
+        this.model.off('change:' + this.props.name, this.onChangeModel, this);
+    }
+
+    onChangeModel(model, value) {
+        this.forceUpdate();
+    }
+
+    get onChange() {
+        return e => { this.value = this._componenValue(e);}
+    }
+
+    _componenValue(e) {
+        return e.target.checked;
+    }
+
+    render() {
         return (
             <div className="checkbox">
                 <label>
                     <input type="checkbox"
-                           checked={this.state.value}
+                           checked={this.value}
                            name={this.props.name}
-                           onChange={this.onChangeValue}
+                           onChange={this.onChange}
                         />
                     {this.props.label}</label>
             </div>
         )
     }
-});
+};
 
