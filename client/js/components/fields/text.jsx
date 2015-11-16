@@ -71,12 +71,13 @@ export default class FieldText extends React.Component {
 
     render() {
         return (
-            <div className={this._classGroup}>
+            <div className={this._classGroup} >
                 <label htmlFor={this._id}>{this.props.label}</label>
                 <input id={this._id}
                        type={this.props.type}
                        className={this.props.classInput}
                        value={this.value}
+                       disabled={this.props.disabled}
                        name={this.props.name}
                        placeholder={this.props.placeholder}
                        onChange={this.onChange}
