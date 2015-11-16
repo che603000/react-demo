@@ -4,13 +4,15 @@
 
 import newId from '../../utils/newId'
 
-export default class FieldText extends React.Component {
+export default class Text extends React.Component {
+
     static defaultProps = {
         validate: false,
         classGroup: 'form-group',
         classGroupError: 'form-group has-error',
         classInput: "form-control"
     }
+
     state = {
         isValid: true
     }
@@ -55,6 +57,11 @@ export default class FieldText extends React.Component {
         }
     }
 
+    //onChange = e => {
+    //    this.value = this.constructor._componentValue(e);
+    //}
+
+
     static _componentValue(e) {
         return e.target.value;
     }
@@ -71,7 +78,7 @@ export default class FieldText extends React.Component {
 
     render() {
         return (
-            <div className={this._classGroup} >
+            <div className={this._classGroup}>
                 <label htmlFor={this._id}>{this.props.label}</label>
                 <input id={this._id}
                        type={this.props.type}

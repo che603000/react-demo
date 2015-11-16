@@ -5,13 +5,12 @@
 // init app
 import './init';
 
-// models
 import LoginModel from './models/login';
 
-// components
-//import LoginForm  from './components/form';
-import LoginForm from './components/_form'
-
+//// components
+////import LoginForm  from './components/form';
+import LoginForm from './components/form'
+//
 var login = new LoginModel({
     email: "alex@api.ru",
     password: '123'

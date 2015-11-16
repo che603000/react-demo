@@ -1,33 +1,70 @@
-import FieldInput from './fields/input'
-import Message from './fields/message'
-import FieldCheckbox from './fields/checkbox'
-
-//let template = (model, state) => {
-//    return model.validationError ? model.validationError.xhr.status : '';
-//}
+import {Text, Checkbox, Message} from  './fields'
 
 export default class LoginForm extends React.Component {
     constructor(props) {
         super(props);
-        this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onSubmit(e) {
-        e.preventDefault();
-        this.props.model.save();
+
+    state = {
+        disabled: false
+    }
+
+    get model() {
+        return this.props.model
+    }
+
+    get onSubmit() {
+        return (e) => {
+            e.preventDefault();
+            this.props.model.save()
+        }
+    }
+
+    componentWillMount() {
+        this.model.on('request', ()=> this.setDisabled(true));
+        //this.model.on('sync error', ()=> this.setDisabled(false));
+    }
+
+    componentWillUnmount() {
+        //this.model.off('sync error', null, this);
+        //this.model.off('request', null, this);
+    }
+
+    setDisabled(value) {
+        this.setState({disabled: value})
     }
 
     render() {
         return (
             <form >
-                <FieldInput label="Email" type="text" name="email" placeholder="Email как логин для приложения"
-                            model={this.props.model}/>
-                <FieldInput label="Пароль" type="password" className="form-control" name="password"
-                            placeholder="Пароль мин 4 знака" model={this.props.model}/>
-                <FieldInput label="Пароль повторно" type="password" className="form-control" name="passwordConfirm"
-                            placeholder="Пароль еще раз для контроля" model={this.props.model}/>
-                <FieldCheckbox name="memory" label="Запомнить меня" model={this.props.model}/>
-                <Message model={this.props.model} label="Error: " className="alert alert-danger"/>
+                <Text label="Логин"
+                      type="mail"
+                      validate
+                      name="email"
+                      disabled={this.state.disabled}
+                      placeholder="Email как логин для приложения"
+                      model={this.model}/>
+
+                <Text label="Пароль"
+                      type="password"
+                      disabled={this.state.disabled}
+                      validate
+                      className="form-control" name="password"
+                      placeholder="Пароль мин 4 знака" model={this.model}/>
+
+                <Text label="Пароль повторно"
+                      type="password"
+                      disabled={this.state.disabled}
+                      validate
+                      className="form-control"
+                      name="passwordConfirm"
+                      placeholder="Пароль еще раз для контроля" model={this.model}/>
+
+                <Checkbox name="memory" label="Запомнить меня" model={this.model}/>
+
+                <Message model={this.model} label="Error: " className="alert alert-danger"/>
+
                 <div className="form-group">
                     <button type="submit" className="btn btn-default" onClick={this.onSubmit}>Отправить</button>
                 </div>
