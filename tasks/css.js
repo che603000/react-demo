@@ -7,13 +7,21 @@ var gulp = require('gulp'),
     browserify = require('browserify'),
     watchify = require('watchify'),
     reactify = require('reactify'),
-    concat = require('gulp-concat');
+    less = require('gulp-less'),
+    mainBowerFiles = require('main-bower-files');
+
+concat = require('gulp-concat');
 
 
-gulp.task('css', function () {
-    console.log("css");
+gulp.task('css-client', function () {
+    return gulp.src(mainBowerFiles(['**/*.css', '**/*.less']))
+        .pipe(less())
+        .pipe(gulp.dest('./client/css/'));
+});
 
+
+gulp.task('css', ['css-client'], function () {
     return gulp.src('./client/css/*.css')
-        //.pipe(concat('styles.css'))
+        .pipe(concat('styles.css'))
         .pipe(gulp.dest('./public/css/'));
 });

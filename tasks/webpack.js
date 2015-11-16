@@ -59,6 +59,7 @@ var conf = {
         "react": 'React',
         //"react-bootstrap":"ReactBootstrap",
         "backbone": 'Backbone',
+        //"leaflet" :"L",
         "backbone.validation": "Backbone.validation",
     },
     watch: true

@@ -7,7 +7,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat');
 
 gulp.task('libs', function () {
-    return gulp.src(mainBowerFiles())
+    return gulp.src(mainBowerFiles('**/*.js'))
         .pipe(concat('libs.js'))
         .pipe(gulp.dest('./public/js/'));
 });
