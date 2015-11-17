@@ -1,0 +1,57 @@
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
+.app-top-menu {
+    top: 0px;
+    left: 0px;
+    /*padding: 2px;*/
+    position: absolute;
+    /*background-color: #EEF;*/
+    width: 100%;
+    /*border: solid 1px darkgray;*/
+    text-align: center;
+}
+
+.app-group-menu-left {
+    float: left;
+}
+
+.app-group-menu-right {
+    float: right;
+}
+
+.app-group-menu-center {
+    display: inline-block;
+}
+
+
+.app-button-menu {
+    margin: 2px;
+    display: inline-block;
+    background-color: #EEE;
+    width: 50px;
+    height: 50px;
+    border: solid 1px darkgray;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.app-button-menu-active {
+    background-color: #EEF;
+}
+
+a.app-button-menu:active{
+    background-color: #FFF;
+}
+
+a.app-button-menu[href^="#menu"]{
+    background-color: #ebcccc;
+}
+
+.centerImage
+{
+    text-align:center;
+    display:block;
+}

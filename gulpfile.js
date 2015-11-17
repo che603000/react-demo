@@ -8,6 +8,7 @@ var gulp = require('gulp'),
 require('./tasks/libs');
 require('./tasks/app');
 require('./tasks/css');
+require('./tasks/images');
 require('./tasks/webpack');
 
 
@@ -16,7 +17,7 @@ gulp.task('clean', function () {
         .pipe(clean());
 });
 
-gulp.task('dev-wp', ['webpack', 'libs', 'css'], function () {
+gulp.task('dev-wp', ['webpack', 'libs', 'css', 'images'], function () {
     return gulp.src('./client/index.html')
         .pipe(gulp.dest('./public/'));
 });

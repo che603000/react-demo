@@ -3,20 +3,29 @@
  */
 
 // init app
-import './init';
-
-import LoginModel from './models/login';
-
-//// components
-////import LoginForm  from './components/form';
-import LoginForm from './components/form'
+//import './init';
 //
-var login = new LoginModel({
-    email: "alex@api.ru",
-    password: '123'
-});
+//import LoginModel from './models/login';
+//
+////// components
+//////import LoginForm  from './components/form';
+//import LoginForm from './components/form'
+////
+//var login = new LoginModel({
+//    email: "alex@api.ru",
+//    password: '123'
+//});
+//ReactDOM.render(
+//    <LoginForm model={login}></LoginForm>,
+//    document.getElementById('example')
+//);
+//
+
+import Menu  from './components/menu';
+
+
 ReactDOM.render(
-    <LoginForm model={login}></LoginForm>,
+    <Menu></Menu>,
     document.getElementById('example')
 );
 
