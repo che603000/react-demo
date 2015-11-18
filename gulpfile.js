@@ -17,7 +17,7 @@ gulp.task('clean', function () {
         .pipe(clean());
 });
 
-gulp.task('dev-wp', ['webpack', 'libs', 'css', 'images'], function () {
+gulp.task('dev-wp', ['webpack', 'libs', 'css'], function () {
     return gulp.src('./client/index.html')
         .pipe(gulp.dest('./public/'));
 });

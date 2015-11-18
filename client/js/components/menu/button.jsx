@@ -31,14 +31,11 @@ export default class Button extends React.Component {
     }
 
     render() {
-        const _href = this.state.active ? ("#menu/" + this._id) : "#",
-            _context = this.props.img ? (<img  src={this.props.img}/>) : (this.props.label || this._id)
+        const _href = this.state.active ? ("./#menu/" + this._id) : "#",
+            _className = "app-button-menu " + this.props.img || "";
 
         return (
-            <a href={_href} className="app-button-menu" onClick={this.onClick} title={this.props.title}>
-                {_context}
-
-            </a>
+            <a href={_href} className={_className} onClick={this.onClick} title={this.props.title}></a>
         )
     }
 };

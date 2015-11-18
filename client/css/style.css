@@ -35,6 +35,7 @@ html, body{
     height: 50px;
     border: solid 1px darkgray;
     border-radius: 5px;
+    text-align: center;
     cursor: pointer;
 }
 
@@ -46,8 +47,8 @@ a.app-button-menu:active{
     background-color: #FFF;
 }
 
-a.app-button-menu[href^="#menu"]{
-    background-color: #ebcccc;
+a.app-button-menu[href^="./#menu"]{
+    background-color: #FFF;
 }
 
 .centerImage

@@ -44,10 +44,10 @@ export default class Menu extends React.Component {
     render() {
         return (
             <div className="app-top-menu">
-                <Group className="app-group-menu-left" key="g1">
-                    <Button onSelect={this.onSelect} img="./images/layers.png" title="~~~~~~~~~~~~~~" key="1"/>
-                    <Button onSelect={this.onSelect} label="Test"/>
-                    <Button onSelect={this.onSelect}/>
+                <Group className="app-group-menu-left">
+                    <Button onSelect={this.onSelect} ref="b1" img="icon-layers2"/>
+                    <Button onSelect={this.onSelect} ref="b2" label="Test"/>
+                    <Button onSelect={this.onSelect} ref="b3"/>
                 </Group>
 
                 <Group className="app-group-menu-right">

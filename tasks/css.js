@@ -3,25 +3,31 @@
  */
 
 var gulp = require('gulp'),
-    source = require('vinyl-source-stream'), // Used to stream bundle for further handling etc.
-    browserify = require('browserify'),
-    watchify = require('watchify'),
-    reactify = require('reactify'),
-    less = require('gulp-less'),
-    mainBowerFiles = require('main-bower-files');
 
+    less = require('gulp-less'),
+    mainBowerFiles = require('main-bower-files'),
+    watch = require('gulp-watch');
 concat = require('gulp-concat');
 
 
-gulp.task('css-client', function () {
+gulp.task('css-client', () => {
     return gulp.src(mainBowerFiles(['**/*.css', '**/*.less']))
         .pipe(less())
         .pipe(gulp.dest('./client/css/'));
 });
 
 
-gulp.task('css', ['css-client'], function () {
+gulp.task('css-compile', ['css-client', 'images'], () => {
+
     return gulp.src('./client/css/*.css')
         .pipe(concat('styles.css'))
         .pipe(gulp.dest('./public/css/'));
+});
+
+gulp.task('css', ['css-compile'], () => {
+
+    watch('./client/css/style.css', {}, e=> {
+        gulp.start('css-compile');
+        console.log("compile css");
+    })
 });
