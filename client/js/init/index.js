@@ -2,6 +2,8 @@
  * Created by alex on 09.11.2015.
  */
 
+require('backbone.nativeajax');
+
 _.extend(Backbone.Model.prototype, Backbone.Validation.mixin);
 
 _.extend(Backbone.Validation.messages, {

@@ -23,5 +23,5 @@ gulp.task('dev-wp', ['webpack', 'libs', 'css'], function () {
 });
 
 gulp.task('dev', ['clean'], function () {
-    return gulp.run('dev-wp');
+    return gulp.start('dev-wp');
 });

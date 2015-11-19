@@ -17,13 +17,13 @@ var conf = {
     entry: "./client/js/app.jsx",
     debug: true, // Gives us sourcemapping
     resolve: {
-        //root: [path.join(__dirname, "bower_components")],
+        root: [path.join(__dirname, "bower_components")],
         modulesDirectories: [
-            ".",
+            "./client/js/**/*.*",
             "bower_components",
             //"node_modules"
         ],
-        extensions: ['', '.js', '.jsx']
+        extensions: ['','.js', '.jsx']
     },
     plugins: [
         new webpack.ResolverPlugin(
@@ -54,12 +54,12 @@ var conf = {
         //don't bundle the 'react' npm package with our bundle.js
         //but get it from a global 'React' variable
         "underscore": '_',
-        "jquery": "$",
+        //"jquery": "$",
         "react-dom": 'ReactDOM',
         "react": 'React',
         //"react-bootstrap":"ReactBootstrap",
         "backbone": 'Backbone',
-        //"leaflet" :"L",
+        "leaflet" :"L",
         "backbone.validation": "Backbone.validation",
     },
     watch: true

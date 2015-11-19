@@ -3,19 +3,16 @@
  */
 
 var gulp = require('gulp'),
-
     less = require('gulp-less'),
     mainBowerFiles = require('main-bower-files'),
-    watch = require('gulp-watch');
-concat = require('gulp-concat');
-
+    watch = require('gulp-watch'),
+    concat = require('gulp-concat');
 
 gulp.task('css-client', () => {
     return gulp.src(mainBowerFiles(['**/*.css', '**/*.less']))
         .pipe(less())
         .pipe(gulp.dest('./client/css/'));
 });
-
 
 gulp.task('css-compile', ['css-client', 'images'], () => {
 
